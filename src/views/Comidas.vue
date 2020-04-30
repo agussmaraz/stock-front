@@ -76,8 +76,8 @@
                     </td>
                     <td>{{ formatearFecha(item.expires) }}</td>
                     <td>
-                        <button @click="eliminarComida(item._id)" class="btn bg-info button-accion">Eliminar</button>
-                        <button @click="activarEdicion(item._id)" class="btn bg-info button-accion">Editar</button>
+                        <button  @click="eliminarComida(item._id)" class="btn bg-danger button-accion">Eliminar</button>
+                        <button  @click="activarEdicion(item._id)" class="btn bg-warning button-accion">Editar</button>
                     </td>
                 </tr>
             </tbody>
@@ -196,8 +196,10 @@
                     this.medida = response.data;
                 });
             },
+
             //Eliminar comida
             eliminarComida(_id) {
+                alert('Estas seguro de eliminarlo?');
                 this.axios.delete(`/comida/${_id}`).then((res) => {
                     const index = this.comida.findIndex((item) => item._id == res.data._id);
                     this.comida.splice(index, 1);
